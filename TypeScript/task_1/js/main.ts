@@ -38,3 +38,16 @@ const director1: Directors = {
 };
 
 console.log(director1);
+
+// Task 3 â- printTeacher function + interface
+export interface printTeacherFunction {
+  (firstName: string, lastName: string): string;
+}
+
+export const printTeacher: printTeacherFunction = (firstName, lastName) => {
+  const initial = firstName ? firstName[0].toUpperCase() : '';
+  return `${initial}. ${lastName}`;
+};
+
+// Example
+console.log(printTeacher('John', 'Doe')); // J. Doe
