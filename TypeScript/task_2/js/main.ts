@@ -50,3 +50,22 @@ export function createEmployee(salary: number | string): Director | Teacher {
 console.log((createEmployee(200) as any).constructor.name);   // Teacher
 console.log((createEmployee(1000) as any).constructor.name);  // Director
 console.log((createEmployee('$500') as any).constructor.name); // Director
+
+// Task 6 â- Functions specific to employees
+
+// Type predicate to check if employee is a Director
+export function isDirector(employee: Director | Teacher): employee is Director {
+  return employee instanceof Director;
+}
+
+// Execute the proper work function based on employee type
+export function executeWork(employee: Director | Teacher): string {
+  if (isDirector(employee)) {
+    return employee.workDirectorTasks();
+  }
+  return employee.workTeacherTasks();
+}
+
+// Expected examples
+console.log(executeWork(createEmployee(200)));   // Getting to work
+console.log(executeWork(createEmployee(1000)));  // Getting to director tasks
