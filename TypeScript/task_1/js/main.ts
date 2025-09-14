@@ -1,6 +1,6 @@
-// Task 1 â- Teacher interface
+// Task 1 & 2 â- Teacher and Directors interfaces
 
-// Note: firstName and lastName are read-only (set only at initialization)
+// Teacher interface
 export interface Teacher {
   readonly firstName: string;
   readonly lastName: string;
@@ -8,18 +8,33 @@ export interface Teacher {
   yearsOfExperience?: number; // optional
   location: string;
 
-  // Allow any additional property with string key and any type
+  // Allow any additional property
   [propName: string]: any;
 }
 
-// Example according to the requirements
+// Directors interface extending Teacher
+export interface Directors extends Teacher {
+  numberOfReports: number;
+}
+
+// Example for Task 1
 const teacher3: Teacher = {
   firstName: 'John',
   fullTimeEmployee: false,
   lastName: 'Doe',
   location: 'London',
-  contract: false, // extra property
+  contract: false,
 };
 
-// Runtime check
 console.log(teacher3);
+
+// Example for Task 2
+const director1: Directors = {
+  firstName: 'John',
+  lastName: 'Doe',
+  location: 'London',
+  fullTimeEmployee: true,
+  numberOfReports: 17,
+};
+
+console.log(director1);
