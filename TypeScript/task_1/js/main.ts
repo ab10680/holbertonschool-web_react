@@ -51,3 +51,35 @@ export const printTeacher: printTeacherFunction = (firstName, lastName) => {
 
 // Example
 console.log(printTeacher('John', 'Doe')); // J. Doe
+
+// Task 4 â- StudentClass with constructor & class interfaces
+
+// Interface describing the *instance* (the class shape)
+export interface StudentClassInterface {
+  workOnHomework(): string;
+  displayName(): string;
+}
+
+// Interface describing the *constructor* signature
+export interface StudentConstructor {
+  new (firstName: string, lastName: string): StudentClassInterface;
+}
+
+// Class implementation typed via the constructor interface
+export const StudentClass: StudentConstructor = class StudentClass
+  implements StudentClassInterface {
+  constructor(private firstName: string, private lastName: string) {}
+
+  workOnHomework(): string {
+    return 'Currently working';
+  }
+
+  displayName(): string {
+    return this.firstName;
+  }
+};
+
+// Quick sanity check (optional)
+const s = new StudentClass('Alice', 'Smith');
+console.log(s.displayName());     // Alice
+console.log(s.workOnHomework());  // Currently working
