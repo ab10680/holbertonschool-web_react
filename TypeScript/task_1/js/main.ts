@@ -1,4 +1,4 @@
-// Task 1 -  Teacher interface
+// Task 1 â- Teacher interface
 
 // Note: firstName and lastName are read-only (set only at initialization)
 export interface Teacher {
